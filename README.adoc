@@ -114,6 +114,6 @@ OAuth2Api.GetAccessToken(OAuthEnvironment environment, String refreshToken, ILis
 Contributions in terms of patches, features, or comments are always welcome. Refer to link:CONTRIBUTING.adoc[CONTRIBUTING] for guidelines. Submit Github issues for any feature enhancements, bugs, or documentation problems as well as questions and comments.
 
 == License
-Copyright (c) 2019 eBay Inc.
+Copyright (c) 2018-2019 eBay Inc.
 
 Use of this source code is governed by a Apache 2.0 license that can be found in the LICENSE file or at https://opensource.org/licenses/Apache-2.0.
