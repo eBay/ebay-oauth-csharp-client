@@ -1,0 +1,14 @@
+language: csharp
+mono: none
+dotnet: 2.1.502 
+
+install:
+- dotnet restore
+
+script:
+ - dotnet build
+ - dotnet test Tests/ebay-oauth-csharp-client-tests.csproj
+
+after_script:
+  - make coverage
+  - bash <(curl -s https://codecov.io/bash)

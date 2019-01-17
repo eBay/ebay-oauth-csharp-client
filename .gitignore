@@ -1,0 +1,13 @@
+.vs/
+coverage-html/
+coverage.hits
+coverage.json
+Tests/bin/
+Tests/obj/
+Tools/obj/
+ebay-oauth-csharp-client/bin/
+ebay-oauth-csharp-client/obj/
+ebay-oauth-csharp-client/ebay-oauth-csharp-client.1.0.0.nupkg
+ebay-oauth-csharp-client/obj/ebay-oauth-csharp-client.csproj.nuget.cache
+ebay-oauth-csharp-client/obj/ebay-oauth-csharp-client.csproj.nuget.g.props
+ebay-oauth-csharp-client/obj/project.assets.json
