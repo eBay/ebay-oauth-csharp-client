@@ -1,4 +1,4 @@
-﻿/*
+/*
  * *
  *  * Copyright 2019 eBay Inc.
  *  *
@@ -28,7 +28,6 @@ using OpenQA.Selenium.Firefox;
 using System.Collections.Specialized;
 using System.Web;
 using YamlDotNet.RepresentationModel;
-using OpenQA.Selenium.Interactions;
 
 namespace eBay.ApiClient.Auth.OAuth2
 {
@@ -57,112 +56,113 @@ namespace eBay.ApiClient.Auth.OAuth2
             // clean up test data here
         }
 
-        //[Fact]
-        //public void GetApplicationToken_Production_Success()
-        //{
-        //    GetApplicationToken_Success(OAuthEnvironment.PRODUCTION);
-        //}
+        [Fact]
+        public void GetApplicationToken_Production_Success()
+        {
+            GetApplicationToken_Success(OAuthEnvironment.PRODUCTION);
+        }
 
-        //[Fact]
-        //public void GetApplicationToken_Sandbox_Success()
-        //{
-        //    GetApplicationToken_Success(OAuthEnvironment.SANDBOX);
-        //}
+        [Fact]
+        public void GetApplicationToken_Sandbox_Success()
+        {
+            GetApplicationToken_Success(OAuthEnvironment.SANDBOX);
+        }
 
-        //[Fact]
-        //public void GetApplicationToken_ProductionCache_Success()
-        //{
-        //    GetApplicationToken_Success(OAuthEnvironment.PRODUCTION);
-        //}
+        [Fact]
+        public void GetApplicationToken_ProductionCache_Success()
+        {
+            GetApplicationToken_Success(OAuthEnvironment.PRODUCTION);
+        }
 
-        //[Fact]
-        //public void GetApplicationToken_SandboxCache_Success()
-        //{
-        //    GetApplicationToken_Success(OAuthEnvironment.SANDBOX);
-        //}
+        [Fact]
+        public void GetApplicationToken_SandboxCache_Success()
+        {
+            GetApplicationToken_Success(OAuthEnvironment.SANDBOX);
+        }
 
-        //[Fact]
-        //public void GetApplicationToken_NullEnvironment_Failure()
-        //{
-        //    Assert.Throws<ArgumentException>(() => oAuth2Api.GetApplicationToken(null, scopes));
-        //}
+        [Fact]
+        public void GetApplicationToken_NullEnvironment_Failure()
+        {
+            Assert.Throws<ArgumentException>(() => oAuth2Api.GetApplicationToken(null, scopes));
+        }
 
-        //[Fact]
-        //public void GetApplicationToken_NullScopes_Failure()
-        //{
-        //    Assert.Throws<ArgumentException>(() => oAuth2Api.GetApplicationToken(OAuthEnvironment.PRODUCTION, null));
-        //}
+        [Fact]
+        public void GetApplicationToken_NullScopes_Failure()
+        {
+            Assert.Throws<ArgumentException>(() => oAuth2Api.GetApplicationToken(OAuthEnvironment.PRODUCTION, null));
+        }
 
-        //[Fact]
-        //public void GenerateUserAuthorizationUrl_Success() {
-        //    String yamlFile = @"../../../ebay-config-sample.yaml";
-        //    StreamReader streamReader = new StreamReader(yamlFile);
-        //    CredentialUtil.Load(streamReader);
+        [Fact]
+        public void GenerateUserAuthorizationUrl_Success() {
+            String yamlFile = @"../../../ebay-config-sample.yaml";
+            StreamReader streamReader = new StreamReader(yamlFile);
+            CredentialUtil.Load(streamReader);
 
-        //    String state = "State";
-        //    String authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.PRODUCTION, userScopes, state);
-        //    Console.WriteLine("======================GenerateUserAuthorizationUrl======================");
-        //    Console.WriteLine("AuthorizationUrl => " + authorizationUrl);
-        //    Assert.NotNull(authorizationUrl);
-        //}
+            String state = "State";
+            String authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.PRODUCTION, userScopes, state);
+            Console.WriteLine("======================GenerateUserAuthorizationUrl======================");
+            Console.WriteLine("AuthorizationUrl => " + authorizationUrl);
+            Assert.NotNull(authorizationUrl);
+        }
 
-        //[Fact]
-        //public void GenerateUserAuthorizationUrl_NullEnvironment_Failure()
-        //{
-        //    Assert.Throws<ArgumentException>(() => oAuth2Api.GenerateUserAuthorizationUrl(null, scopes, null));
-        //}
+        [Fact]
+        public void GenerateUserAuthorizationUrl_NullEnvironment_Failure()
+        {
+            Assert.Throws<ArgumentException>(() => oAuth2Api.GenerateUserAuthorizationUrl(null, scopes, null));
+        }
 
-        //[Fact]
-        //public void GenerateUserAuthorizationUrl_NullScopes_Failure()
-        //{
-        //    Assert.Throws<ArgumentException>(() => oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.PRODUCTION, null, null));
-        //}
+        [Fact]
+        public void GenerateUserAuthorizationUrl_NullScopes_Failure()
+        {
+            Assert.Throws<ArgumentException>(() => oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.PRODUCTION, null, null));
+        }
 
-        //[Fact]
-        //public void ExchangeCodeForAccessToken_Success()
-        //{
-        //    OAuthEnvironment environment = OAuthEnvironment.PRODUCTION;
-        //    String code = "v^1.1**********************jYw";
-        //    OAuthResponse oAuthResponse = oAuth2Api.ExchangeCodeForAccessToken(environment, code);
-        //    Assert.NotNull(oAuthResponse);
-        //    PrintOAuthResponse(environment, "ExchangeCodeForAccessToken", oAuthResponse);
-        //}
+        [Fact]
+        public void ExchangeCodeForAccessToken_Success()
+        {
+            OAuthEnvironment environment = OAuthEnvironment.PRODUCTION;
+            String code = "v^1.1**********************jYw";
+            OAuthResponse oAuthResponse = oAuth2Api.ExchangeCodeForAccessToken(environment, code);
+            Assert.NotNull(oAuthResponse);
+            PrintOAuthResponse(environment, "ExchangeCodeForAccessToken", oAuthResponse);
+        }
 
-        //[Fact]
-        //public void ExchangeCodeForAccessToken_NullEnvironment_Failure()
-        //{
-        //    String code = "v^1.1*********************MjYw";
-        //    Assert.Throws<ArgumentException>(() => oAuth2Api.ExchangeCodeForAccessToken(null, code));
-        //}
+        [Fact]
+        public void ExchangeCodeForAccessToken_NullEnvironment_Failure()
+        {
+            String code = "v^1.1*********************MjYw";
+            Assert.Throws<ArgumentException>(() => oAuth2Api.ExchangeCodeForAccessToken(null, code));
+        }
 
-        //[Fact]
-        //public void ExchangeCodeForAccessToken_NullCode_Failure()
-        //{
-        //    Assert.Throws<ArgumentException>(() => oAuth2Api.ExchangeCodeForAccessToken(OAuthEnvironment.PRODUCTION, null));
-        //}
+        [Fact]
+        public void ExchangeCodeForAccessToken_NullCode_Failure()
+        {
+            Assert.Throws<ArgumentException>(() => oAuth2Api.ExchangeCodeForAccessToken(OAuthEnvironment.PRODUCTION, null));
+        }
 
-        //[Fact]
-        //public void GetAccessToken_Success()
-        //{
-        //    OAuthEnvironment environment = OAuthEnvironment.PRODUCTION;
-        //    String refreshToken = "v^1.1*****************I2MA==";
-        //    OAuthResponse oAuthResponse = oAuth2Api.GetAccessToken(environment, refreshToken, userScopes);
-        //    Assert.NotNull(oAuthResponse);
-        //    PrintOAuthResponse(environment, "GetAccessToken", oAuthResponse);
-        //}
+        [Fact]
+        public void GetAccessToken_Success()
+        {
+            OAuthEnvironment environment = OAuthEnvironment.PRODUCTION;
+            String refreshToken = "v^1.1*****************I2MA==";
+            OAuthResponse oAuthResponse = oAuth2Api.GetAccessToken(environment, refreshToken, userScopes);
+            Assert.NotNull(oAuthResponse);
+            PrintOAuthResponse(environment, "GetAccessToken", oAuthResponse);
+        }
 
         [Fact]
         public void GetAccessToken_EndToEnd_Production()
         {
+            Console.WriteLine("======================GetAccessToken_EndToEnd_Production======================");
             GetAccessToken_EndToEnd(OAuthEnvironment.PRODUCTION);
         }
 
-        //[Fact]
-        //public void GetAccessToken_EndToEnd_Sandbox()
-        //{
-        //    Console.WriteLine("======================GetAccessToken_EndToEnd_Sandbox======================");
-        //    GetAccessToken_EndToEnd(OAuthEnvironment.SANDBOX);
-        //}
+        [Fact]
+        public void GetAccessToken_EndToEnd_Sandbox()
+        {
+            Console.WriteLine("======================GetAccessToken_EndToEnd_Sandbox======================");
+            GetAccessToken_EndToEnd(OAuthEnvironment.SANDBOX);
+        }
 
 
         private void GetApplicationToken_Success(OAuthEnvironment environment) {
@@ -191,9 +191,27 @@ namespace eBay.ApiClient.Auth.OAuth2
 
         private void GetAccessToken_EndToEnd(OAuthEnvironment environment)
         {
+            //Load user credentials
+            UserCredential userCredential = ReadUserNamePassword(environment);
+            if ("<sandbox-username>".Equals(userCredential.UserName) || "<production-username>".Equals(userCredential.UserName) || "<sandbox-user-password>".Equals(userCredential.Pwd) || "<production-user-password>".Equals(userCredential.Pwd))
+            {
+                Console.WriteLine("User name and password are not specified in test-config-sample.yaml");
+                return;
+            }
 
-            GetAuthorizationCode();
-
+            String authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(environment, userScopes, null);
+            Console.WriteLine("AuthorizationUrl => " + authorizationUrl);
+            String authorizationCode = GetAuthorizationCode(authorizationUrl, userCredential);
+            Console.WriteLine("AuthorizationCode => " + authorizationCode);
+            OAuthResponse oAuthResponse = oAuth2Api.ExchangeCodeForAccessToken(environment, authorizationCode);
+            Assert.NotNull(oAuthResponse);
+            Assert.NotNull(oAuthResponse.RefreshToken);
+            String refreshToken = oAuthResponse.RefreshToken.Token;
+            Console.WriteLine("RefreshToken=> " + refreshToken);
+            oAuthResponse = oAuth2Api.GetAccessToken(environment, refreshToken, userScopes);
+            Assert.NotNull(oAuthResponse);
+            Assert.NotNull(oAuthResponse.AccessToken);
+            Console.WriteLine("AccessToken=> " + oAuthResponse.AccessToken.Token);
         }
 
 
@@ -214,7 +232,7 @@ namespace eBay.ApiClient.Auth.OAuth2
                     {
                         continue;
                     }
-                    if (node is YamlMappingNode) { 
+                    if (node is YamlMappingNode) {
                     foreach (var keyValuePair in ((YamlMappingNode)node).Children)
                         {
                             if ("username".Equals(keyValuePair.Key.ToString()))
@@ -232,38 +250,41 @@ namespace eBay.ApiClient.Auth.OAuth2
             return userCredential;
         }
 
-        private void GetAuthorizationCode() {
+        private String GetAuthorizationCode(String authorizationUrl, UserCredential userCredential) {
 
-            String url = "https://developer.ebay.com/signin?tab=register";
             IWebDriver driver = new ChromeDriver("./");
 
-            try
-            {
-                //Submit login form
-                driver.Navigate().GoToUrl(url);
-                Thread.Sleep(3000);
-                var userName = driver.FindElement(By.Name("user_name"));
-                userName.SendKeys("UserName");
-                driver.FindElement(By.Id("w4-w1-w1-password")).SendKeys("password@123");
-                driver.FindElement(By.Name("email")).SendKeys("sdhiman@ebay.com");
-                driver.FindElement(By.Name("re-enter-email")).SendKeys("sdhiman@ebay.com");
-                //driver.FindElement(By.Name("phones[0][phoneNumber]")).SendKeys("4086741865");
-                driver.FindElement(By.Name("checkbox-user-agreement")).Click();
-                driver.FindElement(By.Id("w4-w1-w3-captcha-response-field")).SendKeys("774607");
-                Console.WriteLine("Before join => ");
-                driver.FindElement(By.Id("w4-w1-join-button")).Click();
+            //Submit login form
+            driver.Navigate().GoToUrl(authorizationUrl);
+            IWebElement userId = driver.FindElement(By.Id("userid"));
+            IWebElement password = driver.FindElement(By.Id("pass"));
+            IWebElement submit = driver.FindElement(By.Id("sgnBt"));
+            userId.SendKeys(userCredential.UserName);
+            password.SendKeys(userCredential.Pwd);
+            submit.Click();
 
-                Thread.Sleep(20000);
-            } catch (Exception e)
+            //Wait for success page
+            Thread.Sleep(2000);
+
+            String successUrl = driver.Url;
+
+            //Handle consent
+            if(successUrl.Contains("/consents"))
             {
-                Console.WriteLine("Error in webdriver => " + e.Message);
-            }
-            finally
-            {
-                driver.Quit();
+                IWebElement consent = driver.FindElement(By.Id("submit"));
+                consent.Click();
+                Thread.Sleep(2000);
+                successUrl = driver.Url;
             }
 
+            int iqs = successUrl.IndexOf('?');
+            String querystring = (iqs < successUrl.Length - 1) ? successUrl.Substring(iqs + 1) : String.Empty;
+            // Parse the query string variables into a NameValueCollection.
+            NameValueCollection queryParams = HttpUtility.ParseQueryString(querystring);
+            String code = queryParams.Get("code");
+            driver.Quit();
 
+            return code;
 
         }
 
