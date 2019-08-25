@@ -45,8 +45,13 @@ namespace eBay.ApiClient.Auth.OAuth2
                     //Setting a buffer of 5 minutes for refresh
                     ExpiresAt = expiresAt.Subtract(new TimeSpan(0, 5, 0))
                 };
-
-
+                
+                //Remove key if it exists
+                if(envAppTokenCache.ContainsKey(environment.ConfigIdentifier()))
+                {
+                    envAppTokenCache.Remove(environment.ConfigIdentifier());
+                }
+                
                 envAppTokenCache.Add(environment.ConfigIdentifier(), appTokenCacheModel);
             }
 
