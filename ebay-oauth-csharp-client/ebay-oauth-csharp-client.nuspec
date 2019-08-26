@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>eBay.OAuth.Client</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>eBay OAuth C# Client</title>
     <owners>eBay Inc.</owners>
     <authors>Sandeep Dhiman</authors>
@@ -12,7 +12,7 @@
     <summary>eBay OAuth Client Library to get OAuth Access Tokens</summary>
     <description>The eBay OAuth Client Library supports different grant flows: Client Credentials, Authorization Code and Refresh Token. eBay OAuth Client is a class library that targets the .NET Standard 2.0. This library can be used by any .NET implementation that supports 2.0 version of the .NET Standard.The library caches the client credential grant type access token and refreshes the token if it’s already expired.
     </description>
-    <releaseNotes>First release of eBay oAuth C# Client</releaseNotes>
+    <releaseNotes>Fix of https://github.com/eBay/ebay-oauth-csharp-client/issues/2</releaseNotes>
     <copyright>Copyright 2018-2019 eBay Inc.</copyright>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
