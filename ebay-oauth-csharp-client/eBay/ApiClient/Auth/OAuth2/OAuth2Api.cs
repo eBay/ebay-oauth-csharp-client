@@ -281,6 +281,8 @@ namespace eBay.ApiClient.Auth.OAuth2
             {
                 oAuthResponse.ErrorMessage = response.Content;
                 log.Error("Error in fetching the token. Error:" + oAuthResponse.ErrorMessage);
+                log.Error($"Response Status Code: {response.StatusCode}");
+                log.Error($"Response Error Message: {response.ErrorMessage}");
             }
             else
             {
