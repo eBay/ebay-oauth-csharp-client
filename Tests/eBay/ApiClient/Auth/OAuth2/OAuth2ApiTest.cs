@@ -198,8 +198,7 @@ namespace eBay.ApiClient.Auth.OAuth2
                 Console.WriteLine("User name and password are not specified in test-config-sample.yaml");
                 return;
             }
-
-            String authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(environment, userScopes, null);
+            String authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(environment, userScopes, "State") + "&prompt=login";
             Console.WriteLine("AuthorizationUrl => " + authorizationUrl);
             String authorizationCode = GetAuthorizationCode(authorizationUrl, userCredential);
             Console.WriteLine("AuthorizationCode => " + authorizationCode);
@@ -256,8 +255,9 @@ namespace eBay.ApiClient.Auth.OAuth2
 
             //Submit login form
             driver.Navigate().GoToUrl(authorizationUrl);
-            IWebElement userId = driver.FindElement(By.Id("userid"));
-            IWebElement password = driver.FindElement(By.Id("pass"));
+            List<IWebElement> inputs = new List<IWebElement>(driver.FindElements(By.ClassName("fld")));
+            IWebElement userId = inputs[0]; 
+            IWebElement password = inputs[1]; 
             IWebElement submit = driver.FindElement(By.Id("sgnBt"));
             userId.SendKeys(userCredential.UserName);
             password.SendKeys(userCredential.Pwd);
