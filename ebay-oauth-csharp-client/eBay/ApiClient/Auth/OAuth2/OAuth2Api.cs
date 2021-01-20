@@ -243,6 +243,15 @@ namespace eBay.ApiClient.Auth.OAuth2
                 BaseUrl = new Uri(environment.ApiEndpoint())
             };
 
+            //Get proxy
+            IWebProxy proxy = ProxyUtil.WebProxy;
+
+            //Initialize proxy
+            if (proxy != null)
+            {
+                client.Proxy = proxy;
+            }
+
             //Create request
             RestRequest request = new RestRequest(Method.POST);
 

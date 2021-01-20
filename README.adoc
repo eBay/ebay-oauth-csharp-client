@@ -88,6 +88,12 @@ CredentialUtil.Load(“YAML config file path”);
 or
 CredentialUtil.Load(System.IO.StreamReader);
 
+- If needed, you can add an IWebProxy.
+[source,csharp]
+IWebProxy webProxy = new WebProxy();
+//Your configuration here
+ProxyUtil.WebProxy = webProxy;
+
 - Once the credentials are loaded, call any operation on **OAuth2Api**.
 1. **GetApplicationToken**: Use this operation when the application request an access token to access their own resources,
 not on behalf of a user. Learn more about https://developer.ebay.com/api-docs/static/oauth-client-credentials-grant.html[Client Credentials grant flow].
