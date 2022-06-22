@@ -10,6 +10,6 @@
     <PackageReference Include="YamlDotNet" Version="5.3.0" />
     <PackageReference Include="RestSharp" Version="106.5.4" />
     <PackageReference Include="log4net" Version="2.0.8" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 </Project>
