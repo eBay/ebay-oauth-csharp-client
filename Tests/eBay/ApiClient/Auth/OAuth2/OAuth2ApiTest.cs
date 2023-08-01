@@ -24,7 +24,6 @@ using System.IO;
 using OpenQA.Selenium;
 using System.Threading;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using System.Collections.Specialized;
 using System.Web;
 using YamlDotNet.RepresentationModel;
@@ -36,14 +35,12 @@ namespace eBay.ApiClient.Auth.OAuth2
         private OAuth2Api oAuth2Api = new OAuth2Api();
         private readonly IList<String> scopes = new List<String>()
             {
-                "https://api.ebay.com/oauth/api_scope/buy.marketing",
                 "https://api.ebay.com/oauth/api_scope"
             };
 
         private readonly IList<String> userScopes = new List<String>()
             {
-                "https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly",
-                "https://api.ebay.com/oauth/api_scope/buy.shopping.cart"
+                "https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly"
             };
 
         public OAuth2ApiTest()
@@ -252,14 +249,23 @@ namespace eBay.ApiClient.Auth.OAuth2
 
         private String GetAuthorizationCode(String authorizationUrl, UserCredential userCredential) {
 
-            IWebDriver driver = new ChromeDriver("./");
+            IWebDriver driver = new ChromeDriver(Directory.GetCurrentDirectory());
 
             //Submit login form
             driver.Navigate().GoToUrl(authorizationUrl);
             IWebElement userId = driver.FindElement(By.Id("userid"));
-            IWebElement password = driver.FindElement(By.Id("pass"));
-            IWebElement submit = driver.FindElement(By.Id("sgnBt"));
+            IWebElement continueButton = driver.FindElement(By.Id("signin-continue-btn"));
+
             userId.SendKeys(userCredential.UserName);
+            continueButton.Click();
+
+            OpenQA.Selenium.Support.UI.WebDriverWait wait = new OpenQA.Selenium.Support.UI.WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            IWebElement password = wait.Until(d => driver.FindElement(By.Id("pass")));
+            IWebElement submit = wait.Until(d => driver.FindElement(By.Id("sgnBt")));
+
+            //Wait for page load
+            Thread.Sleep(5000);
+
             password.SendKeys(userCredential.Pwd);
             submit.Click();
 

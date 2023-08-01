@@ -14,9 +14,9 @@ OAuth access tokens verify to eBay that a request is coming from a valid client 
 eBay OAuth Client is a class library that targets the .NET Standard 2.0. This library can be used by any .NET implementation that supports 2.0 version of the .NET Standard.
 
 == Add the eBay.OAuth.Client NuGet Package
-**Current Version** : 1.0.0
+**Current Version** : 2.0.0
 
-Use of this source code is governed by https://opensource.org/licenses/Apache-2.0[Apache-2.0 license].If you're looking for the latest stable version (1.0.0), you can grab it directly from NuGet.org.
+Use of this source code is governed by https://opensource.org/licenses/Apache-2.0[Apache-2.0 license].If you're looking for the latest stable version (2.0.0), you can grab it directly from NuGet.org.
 [source,xml]
 https://www.nuget.org/packages/eBay.OAuth.Client
 
@@ -28,34 +28,34 @@ https://www.nuget.org/packages/eBay.OAuth.Client
 === Package Manager Console
 - Use the following command in your project directory, to install the *eBay.OAuth.Client* package:
 [source,xml]
-Install-Package eBay.OAuth.Client -Version 1.0.0
+Install-Package eBay.OAuth.Client -Version 2.0.0
 
 - After the command completes, open the *.csproj* file to see the added reference:
 [source, xml]
 <ItemGroup>
-   <PackageReference Include="eBay.OAuth.Client" Version="1.0.0" />
+   <PackageReference Include="eBay.OAuth.Client" Version="2.0.0" />
 </ItemGroup>
 
 === .NET CLI
 - Use the following command in your project directory, to install the *eBay.OAuth.Client* package:
 [source,xml]
-dotnet add package eBay.OAuth.Client --version 1.0.0
+dotnet add package eBay.OAuth.Client --version 2.0.0
 
 - After the command completes, open the *.csproj* file to see the added reference:
 [source,xml]
 <ItemGroup>
-   <PackageReference Include="eBay.OAuth.Client" Version="1.0.0" />
+   <PackageReference Include="eBay.OAuth.Client" Version="2.0.0" />
 </ItemGroup>
 
 === Paket CLI
 - Use the following command in your project directory, to install the *eBay.OAuth.Client* package:
 [source,xml]
-paket add eBay.OAuth.Client --version 1.0.0
+paket add eBay.OAuth.Client --version 2.0.0
 
 - After the command completes, open the *.csproj* file to see the added reference:
 [source,xml]
 <ItemGroup>
-   <PackageReference Include="eBay.OAuth.Client" Version="1.0.0" />
+   <PackageReference Include="eBay.OAuth.Client" Version="2.0.0" />
 </ItemGroup>
 
 == Build eBay.OAuth.Client DLL from Source
@@ -64,7 +64,7 @@ paket add eBay.OAuth.Client --version 1.0.0
 [source,shell]
 ./build.sh
 
-- **ebay-oauth-csharp-client.dll** will be created at ebay-oauth-csharp-client/bin/Debug/netstandard2.0
+- **ebay-oauth-csharp-client.dll** will be created at ebay-oauth-csharp-client/bin/Debug/net6.0
 
 == Use the eBay.OAuth.Client in the .NET App
 - Create a config http://yaml.org/[YAML] file in your application. The config file should contain your eBay applications keys:
