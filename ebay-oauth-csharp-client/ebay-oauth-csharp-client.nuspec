@@ -14,8 +14,9 @@
     </description>
     <releaseNotes>Fix of https://github.com/eBay/ebay-oauth-csharp-client/issues/2</releaseNotes>
     <copyright>Copyright 2018-2019 eBay Inc.</copyright>
+    <readme>https://github.com/eBay/ebay-oauth-csharp-client/blob/master/README.md</readme>
     <dependencies>
-      <group targetFramework=".NET 6">
+      <group targetFramework="net6.0">
         <dependency id="YamlDotNet" version="13.1.1" />
         <dependency id="RestSharp" version="110.2.0" />
         <dependency id="log4net" version="2.0.15" />
