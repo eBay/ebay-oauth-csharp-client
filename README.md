@@ -27,11 +27,11 @@ version of the .NET Standard.
 
 # Add the eBay.OAuth.Client NuGet Package
 
-**Current Version** : 2.0.0
+**Current Version** : 2.0.1
 
 Use of this source code is governed by [Apache-2.0
 license](https://opensource.org/licenses/Apache-2.0).If you’re looking
-for the latest stable version (2.0.0), you can grab it directly from
+for the latest stable version (2.0.1), you can grab it directly from
 NuGet.org.
 
 ``` xml
@@ -54,7 +54,7 @@ https://www.nuget.org/packages/eBay.OAuth.Client
   **eBay.OAuth.Client** package:
 
 ``` xml
-Install-Package eBay.OAuth.Client -Version 2.0.0
+Install-Package eBay.OAuth.Client -Version 2.0.1
 ```
 
 - After the command completes, open the **.csproj** file to see the
@@ -62,7 +62,7 @@ Install-Package eBay.OAuth.Client -Version 2.0.0
 
 ``` xml
 <ItemGroup>
-   <PackageReference Include="eBay.OAuth.Client" Version="2.0.0" />
+   <PackageReference Include="eBay.OAuth.Client" Version="2.0.1" />
 </ItemGroup>
 ```
 
@@ -72,7 +72,7 @@ Install-Package eBay.OAuth.Client -Version 2.0.0
   **eBay.OAuth.Client** package:
 
 ``` xml
-dotnet add package eBay.OAuth.Client --version 2.0.0
+dotnet add package eBay.OAuth.Client --version 2.0.1
 ```
 
 - After the command completes, open the **.csproj** file to see the
@@ -80,7 +80,7 @@ dotnet add package eBay.OAuth.Client --version 2.0.0
 
 ``` xml
 <ItemGroup>
-   <PackageReference Include="eBay.OAuth.Client" Version="2.0.0" />
+   <PackageReference Include="eBay.OAuth.Client" Version="2.0.1" />
 </ItemGroup>
 ```
 
@@ -90,7 +90,7 @@ dotnet add package eBay.OAuth.Client --version 2.0.0
   **eBay.OAuth.Client** package:
 
 ``` xml
-paket add eBay.OAuth.Client --version 2.0.0
+paket add eBay.OAuth.Client --version 2.0.1
 ```
 
 - After the command completes, open the **.csproj** file to see the
@@ -98,7 +98,7 @@ paket add eBay.OAuth.Client --version 2.0.0
 
 ``` xml
 <ItemGroup>
-   <PackageReference Include="eBay.OAuth.Client" Version="2.0.0" />
+   <PackageReference Include="eBay.OAuth.Client" Version="2.0.1" />
 </ItemGroup>
 ```
 
