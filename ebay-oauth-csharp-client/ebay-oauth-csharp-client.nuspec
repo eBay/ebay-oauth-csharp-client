@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>eBay.OAuth.Client</id>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <title>eBay OAuth C# Client</title>
     <owners>eBay Inc.</owners>
     <authors>Sandeep Dhiman</authors>
@@ -14,7 +14,7 @@
     </description>
     <releaseNotes>Fix of https://github.com/eBay/ebay-oauth-csharp-client/issues/2</releaseNotes>
     <copyright>Copyright 2018-2019 eBay Inc.</copyright>
-    <readme>https://github.com/eBay/ebay-oauth-csharp-client/blob/master/README.md</readme>
+    <readme>README.md</readme>
     <dependencies>
       <group targetFramework="net6.0">
         <dependency id="YamlDotNet" version="13.1.1" />
@@ -25,4 +25,7 @@
     </dependencies>
     <tags>eBay API OAuth</tags>
   </metadata>
+  <files>
+    <file src="..\README.md" target="" />
+  </files>
 </package>
