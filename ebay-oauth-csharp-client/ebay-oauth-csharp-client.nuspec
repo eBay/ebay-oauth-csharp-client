@@ -2,10 +2,10 @@
 <package >
   <metadata>
     <id>eBay.OAuth.Client</id>
-    <version>2.0.1</version>
+    <version>2.0.2</version>
     <title>eBay OAuth C# Client</title>
     <owners>eBay Inc.</owners>
-    <authors>Sandeep Dhiman</authors>
+    <authors>Sandeep Dhiman, Lokesh Rishi</authors>
     <licenseUrl>https://github.com/ebay/ebay-oauth-csharp-client/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/ebay/ebay-oauth-csharp-client/</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -27,5 +27,6 @@
   </metadata>
   <files>
     <file src="..\README.md" target="" />
+    <file src="bin\Release\net6.0\*.dll" target="lib\net6.0" />
   </files>
 </package>
