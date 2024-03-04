@@ -22,6 +22,13 @@
         <dependency id="log4net" version="2.0.15" />
         <dependency id="Newtonsoft.Json" version="13.0.3" />
       </group>
+      <group targetFramework="netstandard2.0">
+        <dependency id="YamlDotNet" version="13.1.1" />
+        <dependency id="RestSharp" version="110.2.0" />
+        <dependency id="log4net" version="2.0.15" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" />
+      </group>
+        
     </dependencies>
     <tags>eBay API OAuth</tags>
   </metadata>
