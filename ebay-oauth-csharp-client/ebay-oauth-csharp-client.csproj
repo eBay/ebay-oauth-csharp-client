@@ -8,7 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="YamlDotNet" Version="13.1.1" />
-    <PackageReference Include="RestSharp" Version="110.2.0" />
+    <PackageReference Include="RestSharp" Version="112.0.0" />
     <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
