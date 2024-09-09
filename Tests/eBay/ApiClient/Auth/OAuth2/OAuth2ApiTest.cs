@@ -294,5 +294,40 @@ namespace eBay.ApiClient.Auth.OAuth2
 
         }
 
+		[Fact]
+		public void HandleApiResponse_Success()
+		{
+			RestResponse response = new RestResponse
+			{
+				StatusCode = HttpStatusCode.OK,
+				Content = "{\"access_token\":\"dummyAccessToken123\",\"expires_in\":3600,\"refresh_token\":\"dummyRefreshToken456\",\"refresh_token_expires_in\":7200,\"token_type\":\"Bearer\",\"errorMessage\":\"No error\"}"
+			};
+
+			OAuthResponse oAuthResponse = oAuth2Api.HandleApiResponse(response, TokenType.APPLICATION);
+
+			Assert.NotNull(oAuthResponse);
+			Assert.NotNull(oAuthResponse.AccessToken);
+			Assert.NotNull(oAuthResponse.RefreshToken);
+			Assert.Equal("dummyAccessToken123", oAuthResponse.AccessToken.Token);
+			Assert.Equal("dummyRefreshToken456", oAuthResponse.RefreshToken.Token);
+		}
+
+		[Fact]
+		public void HandleApiResponse_Error()
+		{
+			RestResponse response = new RestResponse
+			{
+				StatusCode = HttpStatusCode.BadRequest,
+				Content = "Error in fetching the token."
+			};
+
+			OAuthResponse oAuthResponse = oAuth2Api.HandleApiResponse(response, TokenType.APPLICATION);
+
+			Assert.NotNull(oAuthResponse);
+			Assert.Null(oAuthResponse.AccessToken);
+			Assert.Null(oAuthResponse.RefreshToken);
+			Assert.Equal("Error in fetching the token.", oAuthResponse.ErrorMessage);
+		}
+
     }
 }
