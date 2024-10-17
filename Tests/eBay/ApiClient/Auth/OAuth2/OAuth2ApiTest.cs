@@ -25,7 +25,9 @@ using OpenQA.Selenium;
 using System.Threading;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Specialized;
+using System.Net;
 using System.Web;
+using RestSharp;
 using YamlDotNet.RepresentationModel;
 
 namespace eBay.ApiClient.Auth.OAuth2

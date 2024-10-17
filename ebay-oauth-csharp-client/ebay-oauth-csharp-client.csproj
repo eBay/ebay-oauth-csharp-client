@@ -2,6 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>eBay.ApiClient.Auth.oAuth2</RootNamespace>
+    <PackageId>eBay.OAuth.Client</PackageId>
+    <Version>2.0.3</Version>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="eBay\ApiClient\Auth\" />
