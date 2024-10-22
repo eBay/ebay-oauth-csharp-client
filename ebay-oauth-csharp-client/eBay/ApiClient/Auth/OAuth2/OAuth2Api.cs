@@ -274,7 +274,7 @@ namespace eBay.ApiClient.Auth.OAuth2
         }
 
 
-        private OAuthResponse HandleApiResponse(RestResponse response, TokenType tokenType)
+        public OAuthResponse HandleApiResponse(RestResponse response, TokenType tokenType)
         {
             OAuthResponse oAuthResponse = new OAuthResponse();
             if (response.StatusCode != HttpStatusCode.OK)
