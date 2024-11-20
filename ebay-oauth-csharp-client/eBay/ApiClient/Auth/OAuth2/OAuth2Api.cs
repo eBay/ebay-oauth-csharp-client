@@ -31,6 +31,7 @@ namespace eBay.ApiClient.Auth.OAuth2
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static AppTokenCache appTokenCache = new AppTokenCache();
+        private static AppTokenCache accessTokenCache = new AppTokenCache();
 
         private class AppTokenCache
         {
@@ -206,7 +207,23 @@ namespace eBay.ApiClient.Auth.OAuth2
             };
             String requestPayload = OAuth2Util.CreateRequestPayload(payloadParams);
 
-            OAuthResponse oAuthResponse = FetchToken(environment, requestPayload, TokenType.USER);
+            OAuthResponse oAuthResponse;
+
+            //Check for token in cache
+            oAuthResponse = accessTokenCache.GetValue(environment);
+            if (oAuthResponse != null && oAuthResponse.AccessToken != null && oAuthResponse.AccessToken.Token != null)
+            {
+                log.Info("Returning access token from cache for " + environment.ConfigIdentifier());
+                return oAuthResponse;
+            }
+
+            oAuthResponse = FetchToken(environment, requestPayload, TokenType.USER);
+
+            if (oAuthResponse != null && oAuthResponse.AccessToken != null)
+            {
+                accessTokenCache.UpdateValue(environment, oAuthResponse, oAuthResponse.AccessToken.ExpiresOn);
+            }
+
             return oAuthResponse;
         }
 
