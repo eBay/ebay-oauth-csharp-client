@@ -26,15 +26,24 @@ using System.Threading;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Specialized;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Web;
-using RestSharp;
 using YamlDotNet.RepresentationModel;
 
 namespace eBay.ApiClient.Auth.OAuth2
 {
     public class OAuth2ApiTest : IDisposable
     {
-        private OAuth2Api oAuth2Api = new OAuth2Api();
+        public class DefaultHttpClientFactory : IHttpClientFactory
+        {
+            public HttpClient CreateClient(string name)
+            {
+                return new HttpClient();
+            }
+        }
+
+        private OAuth2Api oAuth2Api;
         private readonly IList<String> scopes = new List<String>()
             {
                 "https://api.ebay.com/oauth/api_scope"
@@ -48,6 +57,7 @@ namespace eBay.ApiClient.Auth.OAuth2
         public OAuth2ApiTest()
         {
             LoadCredentials();
+            oAuth2Api = new OAuth2Api(new DefaultHttpClientFactory());
         }
 
         public void Dispose()
@@ -298,12 +308,15 @@ namespace eBay.ApiClient.Auth.OAuth2
 
 		[Fact]
 		public void HandleApiResponse_Success()
-		{
-			RestResponse response = new RestResponse
-			{
-				StatusCode = HttpStatusCode.OK,
-				Content = "{\"access_token\":\"dummyAccessToken123\",\"expires_in\":3600,\"refresh_token\":\"dummyRefreshToken456\",\"refresh_token_expires_in\":7200,\"token_type\":\"Bearer\",\"errorMessage\":\"No error\"}"
-			};
+        {
+            var response = new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(
+                    "{\"access_token\":\"dummyAccessToken123\",\"expires_in\":3600,\"refresh_token\":\"dummyRefreshToken456\",\"refresh_token_expires_in\":7200,\"token_type\":\"Bearer\",\"errorMessage\":\"No error\"}",
+                    Encoding.UTF8,
+                    "application/json")
+            };
 
 			OAuthResponse oAuthResponse = oAuth2Api.HandleApiResponse(response, TokenType.APPLICATION);
 
@@ -317,10 +330,10 @@ namespace eBay.ApiClient.Auth.OAuth2
 		[Fact]
 		public void HandleApiResponse_Error()
 		{
-			RestResponse response = new RestResponse
+			var response = new HttpResponseMessage
 			{
 				StatusCode = HttpStatusCode.BadRequest,
-				Content = "Error in fetching the token."
+				Content = new StringContent("Error in fetching the token.")
 			};
 
 			OAuthResponse oAuthResponse = oAuth2Api.HandleApiResponse(response, TokenType.APPLICATION);
