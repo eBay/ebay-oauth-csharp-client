@@ -23,13 +23,19 @@ using RestSharp;
 using System.Net;
 using Newtonsoft.Json;
 using System.Text;
-using log4net;
+using Microsoft.Extensions.Logging;
 
 namespace eBay.ApiClient.Auth.OAuth2
 {
     public class OAuth2Api
     {
-        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILogger<OAuth2Api> logger;
+
+        public OAuth2Api(ILogger<OAuth2Api> logger)
+        {
+            this.logger = logger;
+        }
+
         private static AppTokenCache appTokenCache = new AppTokenCache();
 
         private class AppTokenCache
@@ -88,7 +94,7 @@ namespace eBay.ApiClient.Auth.OAuth2
                 oAuthResponse = appTokenCache.GetValue(environment);
                 if (oAuthResponse != null && oAuthResponse.AccessToken != null && oAuthResponse.AccessToken.Token != null)
                 {
-                    log.Info("Returning token from cache for " + environment.ConfigIdentifier());
+                    logger.LogInformation("Returning token from cache for " + environment.ConfigIdentifier());
                     return oAuthResponse;
                 }
             }
@@ -151,7 +157,7 @@ namespace eBay.ApiClient.Auth.OAuth2
 
             sb.Append(OAuth2Util.CreateRequestPayload(queryParams));
 
-            log.Debug("Authorization url " + sb);
+            logger.LogDebug("Authorization url " + sb);
             return sb.ToString();
         }
 
@@ -280,7 +286,7 @@ namespace eBay.ApiClient.Auth.OAuth2
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 oAuthResponse.ErrorMessage = response.Content;
-                log.Error("Error in fetching the token. Error:" + oAuthResponse.ErrorMessage);
+                logger.LogError("Error in fetching the token. Error:" + oAuthResponse.ErrorMessage);
             }
             else
             {
@@ -306,7 +312,7 @@ namespace eBay.ApiClient.Auth.OAuth2
                     oAuthResponse.RefreshToken = refreshToken;
                 }
             }
-            log.Info("Fetched the token successfully from API");
+            logger.LogInformation("Fetched the token successfully from API");
             return oAuthResponse;
         }
     }
